@@ -50,8 +50,10 @@ header {
 }
 
 .header-right a:hover {
-    color: #ff0000; /* Red on hover */
+    color: #05968a; /* Red on hover */
 }
+
+
 
 /* Dropdown Menu Styles */
 .dropdown {
@@ -78,6 +80,10 @@ header {
     min-width: 160px;
     border-radius: 5px;
     padding: 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
 }
 
 .dropdown-content a {
@@ -117,7 +123,96 @@ footer {
 }
 
 .crop-box img, .market-box img {
-    width: 100%;
-    height: auto;
+    width: 500px;
+    height: 500px;
     border-radius: 8px;
 }
+
+/* Additional styles for sliding box and advertising line */
+.sliding-box {
+    border: 2px solid #336633; /* Dark green border */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    width: 1100px; /* Adjust as needed */
+    height: 500px; /* Adjust as needed */
+    margin-right: 20px; /* Space between box and advertisement */
+}
+
+.sliding-box img {
+    width: calc(100%); /* 0.5cm space on each side */
+    height: calc(100% ); /* 0.5cm space on each side */
+    object-fit: cover;
+    position: absolute;
+    transition: opacity 1s ease-in-out;
+}
+
+.sliding-box img.active {
+    opacity: 1;
+}
+
+.sliding-box img.inactive {
+    opacity: 0;
+}
+
+/* Container for positioning the advertising line */
+.advertising-container {
+    position: relative; /* Ensures child elements are positioned relative to this container */
+    width: 100%; /* Full width of the page */
+    padding: 10px; /* Adjust padding as needed */
+}
+
+/* CSS for the zoom-in and zoom-out advertising line */
+.advertising-line {
+    position: absolute; /* Absolute positioning within the container */
+    top: 100px; /* Distance from the top of the container */
+    right: 200px; /* Distance from the right of the container */
+    font-size: 15px;
+    font-weight: bold;
+    color: #044e04; /* Bright green text color */
+    animation: zoomAnimation 3s ease-in-out infinite; /* Adjust duration as needed */
+    white-space: nowrap; /* Ensures text doesn't wrap */
+}
+
+@keyframes zoomAnimation {
+    0%, 100% {
+        transform: scale(1); /* Original size */
+    }
+    50% {
+        transform: scale(1.5); /* Zoomed in size */
+    }
+}
+
+/* Additional styles for container boxes */
+.container-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack containers vertically */
+    gap: 20px; /* Space between rows of containers */
+    margin-top: 90px; /* Space from the advertising line */
+    width: calc(100% - 440px); /* Adjust width based on the sliding box width */
+    /* Ensure this width value makes the container fit well alongside the sliding box */
+}
+
+.top-boxes {
+    display: flex;
+    gap: 20px; /* Space between the two top boxes */
+}
+
+.box.container-box {
+    border: 2px solid #336633; /* Dark green border */
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 20px; /* Internal padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    min-height: 200px; /* Minimum height for boxes */
+    width: 100%; /* Full width of the container */
+    background-color: #ffffff; /* Background color of the boxes */
+}
+
+.full-width-box {
+    width: 100%; /* Full width for the bottom box */
+    min-height: 175px;
+}
+
+
+
+
