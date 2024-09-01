@@ -98,6 +98,9 @@
             flex: 1;
             /* Adjust to fit two boxes side by side */
         }
+        #h{
+            border: 2px solid #ffffff
+        }
 
         .container-wrapper .full-width-box {
             flex: 1;
@@ -126,16 +129,18 @@
         </div>
         <div class="container-wrapper">
             <div class="top-boxes">
+                <a href="{{ url_for('cropSpecAdvice') }}">
                 <div class="box container-box">
-                    <!-- Content for the first box -->
-                    <p>Specific Crop Advice</p>
-                </div>
+                    <img src="{{ url_for('static', filename='images/paddy.jpeg') }}" alt="Crop Advice Image" style="width: 100%; height: auto; border-radius: 8px;">
+                    <center><p>Specific Crop Advice</p></center>
+                </div>   
+                </a>             
                 <div class="box container-box">
-                    <div class="box container-box">
+                    <div class="box container-box" id="h">
                         <form action="/" method="post">
                             <label for="city">City:</label>
-                            <input type="text" id="city" name="city" required>
-                            <button type="submit">Get Weather</button>
+                            <input type="text" id="city" name="city" required><br><br>
+                            <center><button type="submit">Get Weather</button></center>
                         </form>
 
                         {% if weather_data %}

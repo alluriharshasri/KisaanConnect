@@ -3,9 +3,16 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    weather_data = None
+    if request.method == 'POST':
+        city = request.form.get('city')
+        api_key = 'cb6aef422a4b88ba42a6b27a745072da'  # Replace with your OpenWeatherMap API key
+        response = requests.get(f'http://api.openweathermap.org/data/2.5/weather',
+                                params={'q': city, 'appid': api_key, 'units': 'metric'})
+        weather_data = response.json()
+    return render_template('index.html', weather_data=weather_data)
 
 @app.route('/register')
 def register():
@@ -23,9 +30,7 @@ def pests_prediction():
 def disease_prediction():
     return render_template('disease_prediction.html')
 
-@app.route('/weather-insights')
-def weather_insights():
-    return render_template('weather_insights.html')
+
 
 @app.route('/virtual-farmer-assistant')
 def virtual_farmer_assistant():
@@ -43,6 +48,10 @@ def knowledge_sharing_forum():
 def about_us():
     return render_template('about_us.html')
 
+@app.route('/cropSpecAdvice')
+def cropSpecAdvice():
+    return render_template('cropSpecAdvice.html')
+
 @app.route('/login')
 def login():
     return render_template('login.html')
@@ -55,14 +64,3 @@ if __name__ == "__main__":
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    weather_data = None
-    if request.method == 'POST':
-        city = request.form.get('city')
-        api_key = 'cb6aef422a4b88ba42a6b27a745072da'  # Replace with your OpenWeatherMap API key
-        response = requests.get(f'http://api.openweathermap.org/data/2.5/weather',
-                                params={'q': city, 'appid': api_key, 'units': 'metric'})
-        weather_data = response.json()
-    return render_template('index.html', weather_data=weather_data)
