@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisaan Connect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Header with Logo, Kisaan Connect, and Navigation Links -->
+    <header style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #e0ffe0; /* Light green color */
+    ">
+        <div class="header-left" style="
+            display: flex;
+            align-items: center;
+        ">
+            <a href="{{ url_for('index') }}" style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #336633; /* Dark green */
+                font-weight: bold;
+                font-size: 20px;
+            ">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+                <span class="app-name" style="
+                    margin-left: 10px;
+                ">Kisaan Connect</span>
+            </a>
+        </div>
+        <nav class="header-right" style="
+            display: flex;
+            gap: 20px;
+            position: relative;
+        ">
+            <div class="dropdown" style="
+                position: relative;
+            ">
+                <a href="#" id="servicesLink" style="
+                    text-decoration: none;
+                    color: #336633; /* Dark green */
+                    font-weight: bold;
+                    padding: 10px;
+                    display: block;
+                ">Services</a>
+                <div id="dropdownContent" style="
+                    display: none;
+                    position: absolute;
+                    background-color: #ffffff;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                    top: 100%;
+                    left: 0;
+                    min-width: 160px;
+                    border-radius: 5px;
+                    padding: 0;
+                ">
+                    <a href="#" style="
+                        color: #336633;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                    ">Market Updates</a>
+                    <a href="#" style="
+                        color: #336633;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                    ">Pests Prediction</a>
+                    <a href="#" style="
+                        color: #336633;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                    ">Disease Prediction</a>
+                    <a href="#" style="
+                        color: #336633;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                    ">Weather Insights</a>
+                    <a href="#" style="
+                        color: #336633;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                    ">Virtual Farmer Assistant</a>
+                    <a href="#" style="
+                        color: #336633;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                    ">Government Schemes</a>
+                    <a href="#" style="
+                    color: #336633;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                    ">Knowledge Sharing Forum</a>
+                </div>
+            </div>
+            <a href="{{ url_for('about_us') }}" style="
+                text-decoration: none;
+                color: #336633; /* Dark green */
+                font-weight: bold;
+                padding: 10px;
+                display: block;
+            ">About Us</a>
+            <a href="{{ url_for('login') }}" style="
+                text-decoration: none;
+                color: #336633; /* Dark green */
+                font-weight: bold;
+                padding: 10px;
+                display: block;
+            ">Login/Register</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Kisaan Connect. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript to handle dropdown
+        document.getElementById('servicesLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            var dropdown = document.getElementById('dropdownContent');
+            var isVisible = dropdown.style.display === 'block';
+            dropdown.style.display = isVisible ? 'none' : 'block';
+        });
+
+        // Close dropdown if clicking outside
+        document.addEventListener('click', function(event) {
+            var dropdown = document.getElementById('dropdownContent');
+            var servicesLink = document.getElementById('servicesLink');
+            if (!dropdown.contains(event.target) && !servicesLink.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #e0ffe0; /* Light green color */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #336633; /* Dark green */
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.header-left .logo {
+    height: 40px;
+}
+
+.header-left .app-name {
+    margin-left: 10px;
+}
+
+.header-right {
+    display: flex;
+    gap: 20px;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #336633; /* Dark green */
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+}
+
+.header-right a:hover {
+    color: #ff0000; /* Red on hover */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Crop and Market Containers */
+.crop-container, .market-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.crop-box, .market-box {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: calc(33% - 20px);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.crop-box img, .market-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+
+
+market_updates
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Updates - Kisaan Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #e0ffe0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+        }
+        .header-right a {
+            color: #336633;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .header-right a:hover {
+            color: #cc0000;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #e0ffe0;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="index.html"><img src="logo.png" alt="Logo" class="logo"> Kisaan Connect</a>
+        </div>
+        <nav class="header-right">
+            <a href="market_updates.html">Market Updates</a>
+            <a href="pests_prediction.html">Pests Prediction</a>
+            <a href="disease_prediction.html">Disease Prediction</a>
+            <a href="weather_insights.html">Weather Insights</a>
+            <a href="virtual_farmer_assistant.html">Virtual Farmer Assistant</a>
+            <a href="government_schemes.html">Government Schemes</a>
+            <a href="knowledge_sharing_forum.html">Knowledge Sharing Forum</a>
+            <a href="about_us.html">About Us</a>
+            <a href="login.html">Login/Register</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Market Updates</h1>
+        <p>Welcome to the Market Updates page. Here you can find the latest market trends and updates relevant to farmers.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Kisaan Connect. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+virtual_farmer_assistant
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Farmer Assistant - Kisaan Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #e0ffe0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+        }
+        .header-right a {
+            color: #336633;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .header-right a:hover {
+            color: #cc0000;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #e0ffe0;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="index.html"><img src="logo.png" alt="Logo" class="logo"> Kisaan Connect</a>
+        </div>
+        <nav class="header-right">
+            <a href="market_updates.html">Market Updates</a>
+            <a href="pests_prediction.html">Pests Prediction</a>
+            <a href="disease_prediction.html">Disease Prediction</a>
+            <a href="weather_insights.html">Weather Insights</a>
+            <a href="virtual_farmer_assistant.html">Virtual Farmer Assistant</a>
+            <a href="government_schemes.html">Government Schemes</a>
+            <a href="knowledge_sharing_forum.html">Knowledge Sharing Forum</a>
+            <a href="about_us.html">About Us</a>
+            <a href="login.html">Login/Register</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Virtual Farmer Assistant</h1>
+        <p>This page provides virtual assistance for farmers, including tools and resources to help with farming tasks.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Kisaan Connect. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+gov schemes
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes - Kisaan Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #e0ffe0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+        }
+        .header-right a {
+            color: #336633;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .header-right a:hover {
+            color: #cc0000;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #e0ffe0;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="index.html"><img src="logo.png" alt="Logo" class="logo"> Kisaan Connect</a>
+        </div>
+        <nav class="header-right">
+            <a href="market_updates.html">Market Updates</a>
+            <a href="pests_prediction.html">Pests Prediction</a>
+            <a href="disease_prediction.html">Disease Prediction</a>
+            <a href="weather_insights.html">Weather Insights</a>
+            <a href="virtual_farmer_assistant.html">Virtual Farmer Assistant</a>
+            <a href="government_schemes.html">Government Schemes</a>
+            <a href="knowledge_sharing_forum.html">Knowledge Sharing Forum</a>
+            <a href="about_us.html">About Us</a>
+            <a href="login.html">Login/Register</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Government Schemes</h1>
+        <p>Find information about various government schemes and initiatives available to farmers.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Kisaan Connect. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+knowledge_sharing_forum
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Sharing Forum - Kisaan Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #e0ffe0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+        }
+        .header-right a {
+            color: #336633;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .header-right a:hover {
+            color: #cc0000;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #e0ffe0;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="index.html"><img src="logo.png" alt="Logo" class="logo"> Kisaan Connect</a>
+        </div>
+        <nav class="header-right">
+            <a href="market_updates.html">Market Updates</a>
+            <a href="pests_prediction.html">Pests Prediction</a>
+            <a href="disease_prediction.html">Disease Prediction</a>
+            <a href="weather_insights.html">Weather Insights</a>
+            <a href="virtual_farmer_assistant.html">Virtual Farmer Assistant</a>
+            <a href="government_schemes.html">Government Schemes</a>
+            <a href="knowledge_sharing_forum.html">Knowledge Sharing Forum</a>
+            <a href="about_us.html">About Us</a>
+            <a href="login.html">Login/Register</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Knowledge Sharing Forum</h1>
+        <p>Engage with other farmers and share knowledge in our forum.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Kisaan Connect. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Kisan Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-logo img {
+            width: 50px;
+        }
+
+        .login-logo h2 {
+            margin: 10px 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .login-form-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .login-form {
+            flex: 1;
+            text-align: left;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-bottom: 10px;
+            color: #888;
+            text-align: right;
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+
+        .login-divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .login-divider span {
+            margin: 0 10px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .face-login {
+            background-color: #ffec33;
+            color: #333;
+        }
+
+        .google-login {
+            background-color: #db4437;
+            color: white;
+        }
+
+        .microsoft-login {
+            background-color: #0078d4;
+            color: white;
+        }
+
+        .social-button:hover {
+            opacity: 0.9;
+        }
+
+        .signup-prompt {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .signup-prompt a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .signup-prompt a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-logo">
+            <img src="https://via.placeholder.com/50" alt="Kisan Connect Logo">
+            <h2>Kisan Connect</h2>
+        </div>
+
+        <div class="login-form-container">
+            <div class="login-form">
+                <form action="/login" method="post">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <a href="/forgot-password" class="forgot-password">Forgot Password?</a><br>
+                    <button type="submit" class="login-button">Login</button>
+                </form>
+            </div>
+
+            <div class="login-divider">
+                <span>Or</span>
+            </div>
+
+            <div class="social-login">
+                <button class="social-button face-login">Face Recognition</button>
+                <button class="social-button google-login">Google Account</button>
+                <button class="social-button microsoft-login">Microsoft Account</button>
+            </div>
+        </div>
+
+        <div class="signup-prompt">
+            <br>
+            <p>Don't Have an Account Yet? <a href="/signup">Sign Up Here</a></p>
+        </div>
+    </div>
+</body>
+</html>
