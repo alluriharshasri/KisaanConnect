@@ -269,9 +269,8 @@
                     <a href="{{ url_for('market_updates') }}">Market Updates</a>
                     <a href="{{ url_for('pests_prediction') }}">Pests Prediction</a>
                     <a href="{{ url_for('disease_prediction') }}">Disease Prediction</a>
-                    <a href="{{ url_for('weather_insights') }}">Weather Insights</a>
+                    <a href="{{ url_for('weather') }}">Weather Insights</a>
                     <a href="{{ url_for('virtual_farmer_assistant') }}">Virtual Farmer Assistant</a>
-                    <a href="{{ url_for('government_schemes') }}">Government Schemes</a>
                     <a href="{{ url_for('knowledge_sharing_forum') }}">Knowledge Sharing Forum</a>
                 </div>
             </div>
@@ -314,7 +313,7 @@
 
             <div class="signup-prompt">
                 <br>
-                <p>Don't Have an Account Yet? <a href="/signup">Sign Up Here</a></p>
+                <p>Don't Have an Account Yet? <a href="{{ url_for('register') }}">Sign Up Here</a></p>
             </div>
         </div>
     </main>

@@ -166,8 +166,8 @@ footer {
 .advertising-line {
     position: absolute; /* Absolute positioning within the container */
     top: 100px; /* Distance from the top of the container */
-    right: 200px; /* Distance from the right of the container */
-    font-size: 15px;
+    right: 140px; /* Distance from the right of the container */
+    font-size: 12px;
     font-weight: bold;
     color: #044e04; /* Bright green text color */
     animation: zoomAnimation 3s ease-in-out infinite; /* Adjust duration as needed */
