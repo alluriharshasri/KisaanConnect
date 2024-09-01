@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,18 +10,24 @@
     <style>
         /* Additional styles for sliding box, advertising line, and container boxes */
         .sliding-box {
-            border: 2px solid #336633; /* Dark green border */
+            border: 2px solid #336633;
+            /* Dark green border */
             border-radius: 10px;
             overflow: hidden;
             position: relative;
-            width: 400px; /* Increased width */
-            height: 250px; /* Increased height */
-            margin-right: 20px; /* Space between box and advertisement */
+            width: 400px;
+            /* Increased width */
+            height: 250px;
+            /* Increased height */
+            margin-right: 20px;
+            /* Space between box and advertisement */
         }
 
         .sliding-box img {
-            width: calc(100% - 1cm); /* 0.5cm space on each side */
-            height: calc(100% - 1cm); /* 0.5cm space on each side */
+            width: calc(100% - 1cm);
+            /* 0.5cm space on each side */
+            height: calc(100% - 1cm);
+            /* 0.5cm space on each side */
             object-fit: cover;
             position: absolute;
             transition: opacity 1s ease-in-out;
@@ -36,17 +43,26 @@
 
         .advertising-line {
             position: absolute;
-            top: 10px; /* Position at the top-right */
+            top: 10px;
+            /* Position at the top-right */
             right: 10px;
             font-size: 24px;
             font-weight: bold;
-            color: #00ff00; /* Bright green text color */
+            color: #00ff00;
+            /* Bright green text color */
             animation: zoomInOut 3s ease-in-out infinite;
         }
 
         @keyframes zoomInOut {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
         }
 
         .content-wrapper {
@@ -62,12 +78,15 @@
         }
 
         .container-box {
-            border: 2px solid #336633; /* Dark green border */
+            border: 2px solid #336633;
+            /* Dark green border */
             border-radius: 10px;
             padding: 20px;
             box-sizing: border-box;
-            min-height: 150px; /* Adjust as needed */
-            width: 100%; /* Full width within the container */
+            min-height: 150px;
+            /* Adjust as needed */
+            width: 100%;
+            /* Full width within the container */
         }
 
         .container-wrapper .top-boxes {
@@ -76,14 +95,17 @@
         }
 
         .container-wrapper .box {
-            flex: 1; /* Adjust to fit two boxes side by side */
+            flex: 1;
+            /* Adjust to fit two boxes side by side */
         }
 
         .container-wrapper .full-width-box {
-            flex: 1; /* Full width for the bottom box */
+            flex: 1;
+            /* Full width for the bottom box */
         }
     </style>
 </head>
+
 <body>
     {% extends "base.html" %}
 
@@ -98,19 +120,23 @@
         </div>
 
         <!-- Container Boxes -->
-        
-            <div class="advertising-line">
-                Discover the Best Farming Solutions with Kisaan Connect!
-            </div>
-            <div class="container-wrapper">
+
+        <div class="advertising-line">
+            Discover the Best Farming Solutions with Kisaan Connect!
+        </div>
+        <div class="container-wrapper">
             <div class="top-boxes">
                 <div class="box container-box">
                     <!-- Content for the first box -->
-                    <p>Content for Box 1</p>
+                    <p>Specific Crop Advice</p>
                 </div>
                 <div class="box container-box">
-                    <!-- Content for the second box -->
-                    <p>Content for Box 2</p>
+                    <form action="/weather" method="post">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required>
+                        <button type="submit">Get Weather</button>
+                    </form>
+                    <p>Weather Insights</p>
                 </div>
             </div>
             <div class="full-width-box container-box">
@@ -144,4 +170,5 @@
     </script>
     {% endblock %}
 </body>
+
 </html>

@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import requests
 
 app = Flask(__name__)
 
@@ -44,3 +45,18 @@ def login():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route('/login', methods=['POST'])
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/weather', methods=['POST'])
+def weather():
+    city = request.form.get('city')  # Correctly accesses form data
+    api_key = 'cb6aef422a4b88ba42a6b27a745072da'  # Replace with your actual OpenWeatherMap API key
+    response = requests.get(f'http://api.openweathermap.org/data/2.5/weather',
+                            params={'q': city, 'appid': api_key, 'units': 'metric'})
+    data = response.json()
+    return render_template('weather.html', data=data)
