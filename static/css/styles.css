@@ -97,12 +97,16 @@ header {
     background-color: #dcdcdc; /* Light ash/grey on hover */
 }
 
-/* Footer */
+
+/* Footer styles */
 footer {
     text-align: center;
     padding: 10px;
     background-color: #333;
     color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Crop and Market Containers */
@@ -134,8 +138,8 @@ footer {
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    width: 1100px; /* Adjust as needed */
-    height: 500px; /* Adjust as needed */
+    width: 1200px; /* Adjust as needed */
+    height: 550px; /* Adjust as needed */
     margin-right: 20px; /* Space between box and advertisement */
 }
 
@@ -166,8 +170,8 @@ footer {
 .advertising-line {
     position: absolute; /* Absolute positioning within the container */
     top: 100px; /* Distance from the top of the container */
-    right: 140px; /* Distance from the right of the container */
-    font-size: 12px;
+    right: 220px; /* Distance from the right of the container */
+    font-size: 15px;
     font-weight: bold;
     color: #044e04; /* Bright green text color */
     animation: zoomAnimation 3s ease-in-out infinite; /* Adjust duration as needed */
@@ -176,10 +180,10 @@ footer {
 
 @keyframes zoomAnimation {
     0%, 100% {
-        transform: scale(1); /* Original size */
+        transform: scale(1.2); /* Original size */
     }
     50% {
-        transform: scale(1.5); /* Zoomed in size */
+        transform: scale(1.7); /* Zoomed in size */
     }
 }
 
@@ -191,6 +195,7 @@ footer {
     margin-top: 90px; /* Space from the advertising line */
     width: calc(100% - 440px); /* Adjust width based on the sliding box width */
     /* Ensure this width value makes the container fit well alongside the sliding box */
+    
 }
 
 .top-boxes {
@@ -205,12 +210,19 @@ footer {
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     min-height: 200px; /* Minimum height for boxes */
     width: 100%; /* Full width of the container */
-    background-color: #ffffff; /* Background color of the boxes */
+    
+        background: linear-gradient(to bottom, #74e374, #cff2cf);
+        padding: 20px; /* Adjust padding as needed */
+        box-sizing: border-box;
 }
+
+
+
 
 .full-width-box {
     width: 100%; /* Full width for the bottom box */
-    min-height: 175px;
+    min-height: 160px;
+    
 }
 
 

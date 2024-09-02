@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import requests
 
 app = Flask(__name__)
@@ -30,8 +30,6 @@ def pests_prediction():
 def disease_prediction():
     return render_template('disease_prediction.html')
 
-
-
 @app.route('/virtual-farmer-assistant')
 def virtual_farmer_assistant():
     return render_template('virtual_farmer_assistant.html')
@@ -52,15 +50,17 @@ def about_us():
 def cropSpecAdvice():
     return render_template('cropSpecAdvice.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        # Here you can add your logic to validate the user's login credentials
+        # If login is successful, redirect to the dashboard
+        return redirect(url_for('dashboard'))
     return render_template('login.html')
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
-@app.route('/login', methods=['POST'])
 
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
+
+if __name__ == "__main__":
+    app.run(debug=True)

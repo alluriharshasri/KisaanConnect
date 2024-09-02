@@ -1,113 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kisaan Connect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <style>
-        /* Resetting some default styles */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
+        /* Styles for the sliding image box */
+        .sliding-box {
+            border: 2px solid #336633; /* Dark green border */
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            width: 1100px; /* Adjust width as needed */
+            height: 550px; /* Adjust height as needed */
+            margin-right: 20px; /* Space between box and advertisement */
         }
 
-        /* Header styles */
+        .sliding-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .sliding-box img.active {
+            opacity: 1;
+        }
+
+        .sliding-box img.inactive {
+            opacity: 0;
+        }
+
+        /* Styles for content wrapper */
+        .content-wrapper {
+            padding-top: 15px;
+            padding-left: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Styles for container boxes */
+        .container-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .container-box {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        .top-boxes {
+            display: flex;
+            gap: 20px;
+        }
+
+        .full-width-box {
+            flex: 1 1 100%;
+        }
+
+        /* Styles for form and weather data */
+        .weather-form {
+            text-align: center;
+        }
+
+        .weather-data {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Styles for header and footer */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
+            padding: 10px 20px; /* Reduced padding for smaller navbar */
+            background-color: #e6ffe6; /* Light green */
         }
 
         .header-logo-link {
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: white;
+            color: #004d00;
         }
 
-        .logo {
-            width: 50px;
-            height: auto;
-        }
-
-        .app-name {
-            margin-left: 10px;
-            font-size: 1.5em;
-            font-weight: bold;
+        .header-logo-link .logo {
+            height: 40px; /* Reduced logo height */
+            margin-right: 10px;
         }
 
         .header-right {
             display: flex;
-            gap: 15px;
+            align-items: center;
         }
 
         .header-right a {
-            color: white;
+            margin-left: 20px;
             text-decoration: none;
-            font-size: 1em;
+            color: #004d00;
         }
 
-        .header-right a:hover {
-            text-decoration: underline;
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle {
-            cursor: pointer;
-        }
-
+        /* Styles for dropdown */
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: white;
-            color: #333;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 1000;
-            border-radius: 5px;
-            padding: 10px;
-            width: 200px;
         }
 
         .dropdown-content a {
             display: block;
-            padding: 5px 10px;
+            padding: 10px;
             text-decoration: none;
             color: #333;
         }
 
         .dropdown-content a:hover {
-            background-color: #f0f0f0;
+            background-color: #f1f1f1;
         }
 
-        /* Main content styles */
-        main {
-            padding: 20px;
-        }
-
-        /* Footer styles */
+        /* Styles for footer */
         footer {
-            text-align: center;
             padding: 10px;
-            background-color: #333;
-            color: #fff;
+            background-color: #004d00; /* Dark green footer */
+            color: white;
+            text-align: center;
         }
     </style>
 </head>
+
 <body>
-    <!-- Header with Logo, Kisaan Connect, and Navigation Links -->
+    <!-- Header -->
     <header class="header">
         <div class="header-left">
             <a href="{{ url_for('index') }}" class="header-logo-link">
@@ -132,7 +184,57 @@
 
     <!-- Main Content -->
     <main>
-        {% block content %}{% endblock %}
+        {% block content %}
+        <div class="content-wrapper">
+            <!-- Sliding Image Box -->
+            <div class="sliding-box">
+                <img src="{{ url_for('static', filename='images/image1.jpeg') }}" class="active" alt="Slide 1">
+                <img src="{{ url_for('static', filename='images/image2.jpeg') }}" class="inactive" alt="Slide 2">
+                <img src="{{ url_for('static', filename='images/image3.jpeg') }}" class="inactive" alt="Slide 3">
+                <img src="{{ url_for('static', filename='images/image4.jpeg') }}" class="inactive" alt="Slide 4">
+            </div>
+
+            <!-- Container Boxes -->
+            <div class="container-wrapper">
+                <div class="top-boxes">
+                    <a href="{{ url_for('cropSpecAdvice') }}">
+                        <div class="box container-box">
+                            <img src="{{ url_for('static', filename='images/paddy.jpeg') }}" alt="Crop Advice Image"
+                                style="width: 100%; height: auto; border-radius: 8px;">
+                            <div style="text-align: center;">
+                                <p style="color: #004d00; font-weight: bold;">Specific Crop Advice</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="box container-box">
+                        <div id="h">
+                            <form action="/" method="post" class="weather-form">
+                                <label for="city">City:</label>
+                                <input type="text" id="city" name="city" required><br><br>
+                                <button type="submit">Get Weather</button>
+                            </form>
+
+                            {% if weather_data %}
+                            <div class="weather-data">
+                                {% if weather_data.cod == 200 %}
+                                <h2>Weather Insights</h2>
+                                <p>City: {{ weather_data.name }}</p>
+                                <p>Temperature: {{ weather_data.main.temp }}°C</p>
+                                <p>Condition: {{ weather_data.weather[0].description }}</p>
+                                {% else %}
+                                <p style="color: red;">Error: {{ weather_data.message }}</p>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="full-width-box container-box">
+                    <p>Content for Box 3</p>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
     </main>
 
     <!-- Footer -->
@@ -141,6 +243,27 @@
     </footer>
 
     <script>
+        // JavaScript to handle the image sliding
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.sliding-box img');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                slide.classList.add('inactive');
+            });
+            slides[index].classList.remove('inactive');
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            showSlide(currentIndex);
+        }
+
+        setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
         // JavaScript to handle dropdown
         document.getElementById('servicesLink').addEventListener('click', function(event) {
             event.preventDefault();
@@ -159,4 +282,5 @@
         });
     </script>
 </body>
+
 </html>

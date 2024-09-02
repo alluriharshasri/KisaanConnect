@@ -1,6 +1,104 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Updates</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #004d00; /* Dark green background */
+            color: #004d00; /* Dark green text */
+        }
+        header {
+            padding: 20px;
+            background-color: #e6ffe6; /* Light green background for header */
+            text-align: left;
+            color: #004d00; /* Dark green text */
+            font-size: 24px;
+            font-weight: bold;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff; /* White background for main content */
+            border-radius: 10px;
+            margin: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container-box {
+            border: 1px solid #004d00; /* Dark green border */
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #004d00; /* Dark green background for container */
+            color: #ffffff; /* White text */
+        }
+        .search-bar {
+            margin-bottom: 20px;
+        }
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #004d00; /* Dark green border */
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .update-box {
+            background-color: #004d00; /* Dark green background */
+            border: 1px solid #003300; /* Slightly darker green border */
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            color: #ffffff; /* White text */
+        }
+        footer {
+            padding: 10px;
+            background-color: #004d00; /* Dark green footer */
+            color: white;
+            text-align: center;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Market Updates
+    </header>
 
-{% block content %}
-    <h1>Market Updates</h1>
-    <p>Welcome to the Market Updates page. Here you will find the latest updates and insights on market trends.</p>
-{% endblock %}
+    <main>
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search for updates...">
+        </div>
+
+        <!-- Updates Section -->
+        <div class="update-box">
+            <h3>Update 1</h3>
+            <p>Details about the first market update...</p>
+        </div>
+        <div class="update-box">
+            <h3>Update 2</h3>
+            <p>Details about the second market update...</p>
+        </div>
+        <div class="update-box">
+            <h3>Update 3</h3>
+            <p>Details about the third market update...</p>
+        </div>
+        <div class="update-box">
+            <h3>Update 4</h3>
+            <p>Details about the fourth market update...</p>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 Kisaan Connect. All rights reserved.
+    </footer>
+</body>
+</html>

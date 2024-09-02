@@ -83,7 +83,7 @@
             border-radius: 10px;
             padding: 20px;
             box-sizing: border-box;
-            min-height: 150px;
+            min-height: 125px;
             /* Adjust as needed */
             width: 100%;
             /* Full width within the container */
@@ -132,7 +132,11 @@
                 <a href="{{ url_for('cropSpecAdvice') }}">
                 <div class="box container-box">
                     <img src="{{ url_for('static', filename='images/paddy.jpeg') }}" alt="Crop Advice Image" style="width: 100%; height: auto; border-radius: 8px;">
-                    <center><p>Specific Crop Advice</p></center>
+                    <div style="text-align: center;">
+                        <p style="color: #004d00; font-weight: bold; text-decoration: none;">Specific Crop Advice</p>
+                    </div>
+                    
+
                 </div>   
                 </a>             
                 <div class="box container-box">
